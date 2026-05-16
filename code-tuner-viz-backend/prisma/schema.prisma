@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model class_metrics {
+  id                            BigInt   @id @default(autoincrement())
+  repository_owner              String   @db.VarChar(100)
+  repository_name               String   @db.VarChar(100)
+  commit_hash                   String   @db.VarChar(40)
+  commit_date                   DateTime @db.Timestamp(6)
+  language                      String   @db.VarChar(50)
+  package_name                  String   @db.VarChar(255)
+  class_name                    String   @db.VarChar(255)
+  fully_qualified_name          String   @db.VarChar(512)
+  class_type                    String?  @db.VarChar(50)
+  class_complexity              Int?
+  class_complexity_excl_getters Int?
+  average_method_complexity     Float?
+  max_method_complexity         Int?
+  class_loc                     Int?
+  class_loc_excl_getters        Int?
+  method_count                  Int?
+  public_method_count           Int?
+  field_count                   Int?
+  public_field_count            Int?
+  class_dependencies_count      Int?
+  package_dependencies_count    Int?
+  is_god_class                  Boolean?
+  lack_of_cohesion              Float?
+  complexity_density            Float?
+  comment_density               Float?
+  total_complexity              String?  @db.VarChar(50)
+  total_complexity_excl_getters String?  @db.VarChar(50)
+  total_loc                     String?  @db.VarChar(50)
+  total_loc_excl_getters        String?  @db.VarChar(50)
+}
+
+model package_metrics {
+  id                           BigInt   @id @default(autoincrement())
+  repository_owner             String   @db.VarChar(100)
+  repository_name              String   @db.VarChar(100)
+  commit_hash                  String   @db.VarChar(40)
+  commit_date                  DateTime @db.Timestamp(6)
+  language                     String   @db.VarChar(50)
+  package_name                 String   @db.VarChar(255)
+  file_count                   Int?
+  package_complexity           Int?
+  average_complexity           Float?
+  max_complexity               Int?
+  complexity_density           Float?
+  package_loc                  Int?
+  total_classes                Int?
+  total_methods                Int?
+  average_method_loc           Float?
+  maintainability_index        Float?
+  comment_density              Float?
+  code_smells_count            Int?
+  high_complexity_methods      Int?
+  very_high_complexity_methods Int?
+  technical_debt_minutes       Int?
+  technical_debt_ratio         Float?
+  afferent_coupling            Int?
+  efferent_coupling            Int?
+  instability                  Float?
+  external_dependencies_count  Int?
+  max_class_complexity         Int?
+  avg_class_complexity         Float?
+  max_class_loc                Int?
+  avg_class_loc                Float?
+  god_class_count              Int?
+  interface_count              Int?
+  abstract_class_count         Int?
+  avg_class_cohesion           Float?
+  analyzed_at                  DateTime @db.Timestamp(6)
+  total_complexity             String?  @db.VarChar(50)
+  total_loc                    String?  @db.VarChar(50)
+}

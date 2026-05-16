@@ -1,0 +1,559 @@
+=== FRONTEND FILE DUMP (12/14/2025 02:13:05) ===
+
+Working dir: C:\Users\Administrator\Desktop\a\code-tuner-viz-frontend
+
+
+===== FILE: .\package.json =====
+
+{
+  "name": "code-tuner-viz-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "prismjs": "^1.30.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.26.2",
+    "recharts": "^3.5.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^5.1.1",
+    "autoprefixer": "^10.4.22",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.4",
+    "vite": "npm:rolldown-vite@7.2.5"
+  },
+  "overrides": {
+    "vite": "npm:rolldown-vite@7.2.5"
+  }
+}
+
+
+===== FILE: .\vite.config.ts =====
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})
+
+
+===== FILE: .\tsconfig.json =====
+
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+
+
+===== FILE: .\index.html =====
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>code-tuner-viz-frontend</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
+===== FILE: .\src\main.tsx =====
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./styles.css";
+import "./index.css";
+
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+
+===== FILE: .\src\App.tsx =====
+
+import { RouterProvider } from "react-router-dom";
+import { router } from "./app/router";
+
+export default function App() {
+  return <RouterProvider router={router} />;
+}
+
+
+===== FILE: .\src\index.css =====
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+
+===== FILE: .\src\App.css =====
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+===== FILE: C:\Users\Administrator\Desktop\a\code-tuner-viz-frontend\src\pages\BenchmarksPage.tsx =====
+
+import React from "react";
+import { createMetricsApi } from "../features/metrics/api";
+import { CodeBlock } from "../shared/ui/CodeBlock";
+
+export function BenchmarksPage() {
+  const api = React.useMemo(() => createMetricsApi(), []);
+  const [rows, setRows] = React.useState<{ project: string; avgComplexity: number; avgClassSize: number }[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        const d = await api.getBenchmarks();
+        if (alive) setRows(d);
+      } finally {
+        if (alive) setLoading(false);
+      }
+    })();
+    return () => { alive = false; };
+  }, [api]);
+
+  const json = JSON.stringify(rows, null, 2);
+
+  return (
+    <div className="grid two">
+      <div className="card">
+        <h2>Benchmarks</h2>
+        <p className="small">Compare your project against benchmark projects (mock data for now).</p>
+        {loading ? (
+          <p>Loading</p>
+        ) : (
+          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <thead>
+              <tr>
+                <th style={{ textAlign: "left", padding: 8, borderBottom: "1px solid #eee" }}>Project</th>
+                <th style={{ textAlign: "right", padding: 8, borderBottom: "1px solid #eee" }}>Avg Complexity</th>
+                <th style={{ textAlign: "right", padding: 8, borderBottom: "1px solid #eee" }}>Avg Class Size</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r) => (
+                <tr key={r.project}>
+                  <td style={{ padding: 8, borderBottom: "1px solid #f2f2f2" }}>{r.project}</td>
+                  <td style={{ padding: 8, borderBottom: "1px solid #f2f2f2", textAlign: "right" }}>{r.avgComplexity.toFixed(1)}</td>
+                  <td style={{ padding: 8, borderBottom: "1px solid #f2f2f2", textAlign: "right" }}>{Math.round(r.avgClassSize)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+
+      <div className="card">
+        <h2>JSON output</h2>
+        <p className="small">This is what your backend could return.</p>
+        <CodeBlock language="json" code={json || "[]"} />
+      </div>
+    </div>
+  );
+}
+
+
+===== FILE: C:\Users\Administrator\Desktop\a\code-tuner-viz-frontend\src\pages\ClassSizesPage.tsx =====
+
+import React from "react";
+import { createMetricsApi } from "../features/metrics/api";
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+
+export function ClassSizesPage() {
+  const api = React.useMemo(() => createMetricsApi(), []);
+  const [data, setData] = React.useState<{ className: string; loc: number; methods: number }[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        const d = await api.getClassSizes();
+        if (alive) setData(d);
+      } catch (e) {
+        if (alive) setError(e instanceof Error ? e.message : "Unknown error");
+      } finally {
+        if (alive) setLoading(false);
+      }
+    })();
+    return () => { alive = false; };
+  }, [api]);
+
+  return (
+    <div className="card">
+      <h2>Class Sizes</h2>
+      <p className="small">Lines of code (LOC) per class, useful for spotting bloat.</p>
+
+      {loading && <p>Loading</p>}
+      {error && <p style={{ color: "crimson" }}>{error}</p>}
+
+      {!loading && !error && (
+        <div style={{ width: "100%", height: 360 }}>
+          <ResponsiveContainer>
+            <BarChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="className" hide />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="loc" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+
+      {!loading && !error && (
+        <div className="card" style={{ marginTop: 16 }}>
+          <h3 style={{ marginTop: 0 }}>Raw table</h3>
+          <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <thead>
+              <tr>
+                <th style={{ textAlign: "left", padding: 8, borderBottom: "1px solid #eee" }}>Class</th>
+                <th style={{ textAlign: "right", padding: 8, borderBottom: "1px solid #eee" }}>LOC</th>
+                <th style={{ textAlign: "right", padding: 8, borderBottom: "1px solid #eee" }}>Methods</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((r) => (
+                <tr key={r.className}>
+                  <td style={{ padding: 8, borderBottom: "1px solid #f2f2f2" }}>{r.className}</td>
+                  <td style={{ padding: 8, borderBottom: "1px solid #f2f2f2", textAlign: "right" }}>{r.loc}</td>
+                  <td style={{ padding: 8, borderBottom: "1px solid #f2f2f2", textAlign: "right" }}>{r.methods}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+===== FILE: C:\Users\Administrator\Desktop\a\code-tuner-viz-frontend\src\pages\HistogramPage.tsx =====
+
+import React from "react";
+import { createMetricsApi } from "../features/metrics/api";
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+
+export function HistogramPage() {
+  const api = React.useMemo(() => createMetricsApi(), []);
+  const [data, setData] = React.useState<{ label: string; count: number }[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        const d = await api.getComplexityHistogram();
+        if (alive) setData(d);
+      } catch (e) {
+        if (alive) setError(e instanceof Error ? e.message : "Unknown error");
+      } finally {
+        if (alive) setLoading(false);
+      }
+    })();
+    return () => { alive = false; };
+  }, [api]);
+
+  return (
+    <div className="card">
+      <h2>Complexity Histogram</h2>
+      <p className="small">Distribution of cyclomatic complexity across measured classes.</p>
+
+      {loading && <p>Loading</p>}
+      {error && <p style={{ color: "crimson" }}>{error}</p>}
+
+      {!loading && !error && (
+        <div style={{ width: "100%", height: 360 }}>
+          <ResponsiveContainer>
+            <BarChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="label" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="count" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+===== FILE: C:\Users\Administrator\Desktop\a\code-tuner-viz-frontend\src\pages\OverviewPage.tsx =====
+
+import React from "react";
+import { createMetricsApi } from "../features/metrics/api";
+import { CodeBlock } from "../shared/ui/CodeBlock";
+
+export function OverviewPage() {
+  const api = React.useMemo(() => createMetricsApi(), []);
+  const [loading, setLoading] = React.useState(true);
+  const [kpis, setKpis] = React.useState({ totalClasses: 0, avgComplexity: 0, avgLoc: 0 });
+
+  React.useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        const [hist, sizes, trend] = await Promise.all([
+          api.getComplexityHistogram(),
+          api.getClassSizes(),
+          api.getComplexityTrend(),
+        ]);
+
+        const totalClasses = hist.reduce((a, b) => a + b.count, 0);
+        const avgLoc = sizes.length ? Math.round(sizes.reduce((a, b) => a + b.loc, 0) / sizes.length) : 0;
+        const avgComplexity = trend.length ? trend[trend.length - 1].avgComplexity : 0;
+
+        if (alive) setKpis({ totalClasses, avgComplexity, avgLoc });
+      } finally {
+        if (alive) setLoading(false);
+      }
+    })();
+    return () => { alive = false; };
+  }, [api]);
+
+  const exampleQuery = `SELECT
+  class_name,
+  cyclomatic_complexity,
+  lines_of_code,
+  created_at
+FROM metrics
+WHERE created_at >= NOW() - INTERVAL '30 days'
+ORDER BY created_at ASC;`;
+
+  return (
+    <div className="grid two">
+      <div className="card">
+        <h2>Overview</h2>
+        <p className="small">
+          This frontend is ready for your Code Tuner visualisations. Right now it can run on mock data
+          (VITE_USE_MOCKS=true) or later call your backend API.
+        </p>
+
+        {loading ? (
+          <p>Loading KPIs</p>
+        ) : (
+          <div className="grid">
+            <div className="card">
+              <div className="small">Total classes measured</div>
+              <div className="kpi">{kpis.totalClasses}</div>
+            </div>
+            <div className="card">
+              <div className="small">Latest avg complexity</div>
+              <div className="kpi">{kpis.avgComplexity.toFixed(1)}</div>
+            </div>
+            <div className="card">
+              <div className="small">Avg LOC per class</div>
+              <div className="kpi">{kpis.avgLoc}</div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="card">
+        <h2>Prism demo</h2>
+        <p className="small">Example SQL you might use in the backend (highlighted via PrismJS):</p>
+        <CodeBlock language="sql" code={exampleQuery} />
+      </div>
+    </div>
+  );
+}
+
+
+===== FILE: C:\Users\Administrator\Desktop\a\code-tuner-viz-frontend\src\pages\TrendPage.tsx =====
+
+import React from "react";
+import { createMetricsApi } from "../features/metrics/api";
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+
+export function TrendPage() {
+  const api = React.useMemo(() => createMetricsApi(), []);
+  const [data, setData] = React.useState<{ date: string; avgComplexity: number }[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        const d = await api.getComplexityTrend();
+        if (alive) setData(d);
+      } catch (e) {
+        if (alive) setError(e instanceof Error ? e.message : "Unknown error");
+      } finally {
+        if (alive) setLoading(false);
+      }
+    })();
+    return () => { alive = false; };
+  }, [api]);
+
+  return (
+    <div className="card">
+      <h2>Complexity Trend</h2>
+      <p className="small">Average cyclomatic complexity over time (e.g. per day/week/month).</p>
+
+      {loading && <p>Loading</p>}
+      {error && <p style={{ color: "crimson" }}>{error}</p>}
+
+      {!loading && !error && (
+        <div style={{ width: "100%", height: 360 }}>
+          <ResponsiveContainer>
+            <LineChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="date" />
+              <YAxis />
+              <Tooltip />
+              <Line type="monotone" dataKey="avgComplexity" dot />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      )}
+    </div>
+  );
+}
+
